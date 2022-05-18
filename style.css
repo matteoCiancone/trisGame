@@ -11,7 +11,6 @@ h1 {
     margin: 20px;
 }
 
-
 .trisGrid {
     display: grid;
     grid-template-columns: repeat(3, auto);
@@ -37,7 +36,6 @@ h1 {
 .cell:nth-child(n + 7) {
     border-bottom: none;
 }
-
 
 .repeatBtn {
     border: 1px solid white;
