@@ -18,20 +18,27 @@ const winComb = [
     [2, 4, 6]
 ]
 
+let stopGame = false;
 
 cells.forEach(cell => {
     cell.addEventListener("click", function () {
         cell.innerHTML = currentPlayer;
-        if (currentPlayer == "X") {
-            currentPlayer = "O";
-            playerTurn.innerHTML = "O's turn"
-        } else if (currentPlayer = "O") {
-            currentPlayer = "X";
-            playerTurn.innerHTML = "X's turn"
-        }
-        checkWinner()
+        checkWinner();
+        noWinner();
+        changePlayer();
     })
 })
+
+
+function changePlayer() {
+    if (currentPlayer == "X") {
+        currentPlayer = "O";
+        playerTurn.innerHTML = "O's turn"
+    } else if (currentPlayer = "O") {
+        currentPlayer = "X";
+        playerTurn.innerHTML = "X's turn"
+    }
+}
 
 function checkWinner() {
     winComb.forEach(comb => {
@@ -41,6 +48,14 @@ function checkWinner() {
         }
     })
 }
+
+function noWinner() {
+    let pair = cells.every((cells) => cells.innerHTML.trim() != "");
+    if (pair) {
+        winner.innerHTML = ` no one win the game!`
+    }
+}
+
 
 function refreshPage() {
     window.location.reload()
